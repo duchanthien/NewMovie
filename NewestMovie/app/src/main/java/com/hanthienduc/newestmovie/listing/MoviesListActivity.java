@@ -1,9 +1,11 @@
-package com.hanthienduc.newestmovie;
+package com.hanthienduc.newestmovie.listing;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.hanthienduc.newestmovie.R;
+
+public class MoviesListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
