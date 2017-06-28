@@ -5,7 +5,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/window_background</item>
+        <!--
+                <item name="android:windowBackground">@color/window_background</item>
+        -->
         <item name="android:dialogTheme">@style/TitledDialog</item>
     </style>
 
@@ -28,9 +30,9 @@
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CollapsedToolbar" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">@android:color/white</item>
@@ -42,7 +44,6 @@
     </style>
 
     <string name="movie_details">Movie Details</string>
-
 
 
 </resources>
