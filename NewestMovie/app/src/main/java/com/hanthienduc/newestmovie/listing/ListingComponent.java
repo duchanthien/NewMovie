@@ -6,4 +6,5 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {ListingModule.class})
 public interface ListingComponent {
 
+    MoviesListingFragment inject(MoviesListingFragment fragment);
 }

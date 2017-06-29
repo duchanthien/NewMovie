@@ -15,7 +15,7 @@ public class RequestHandler {
 
     public String request(Request request) throws IOException {
         Response response = okHttpClient.newCall(request).execute();
-        String body = response.body().toString();
+        String body = response.body().string();
 
         if (response.isSuccessful()) {
             return body;

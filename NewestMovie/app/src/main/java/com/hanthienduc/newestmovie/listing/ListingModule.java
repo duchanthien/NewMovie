@@ -13,6 +13,7 @@ public class ListingModule {
         return new MoviesListingInteractorImpl(requestHandler);
     }
 
+    @Provides
     MoviesListingPresenter provideMovieListingPresenter(MoviesListingInteractor interactor) {
         return new MoviesListingPresenterImpl(interactor);
     }

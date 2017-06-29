@@ -1,6 +1,8 @@
 package com.hanthienduc.newestmovie;
 
 
+import com.hanthienduc.newestmovie.listing.ListingComponent;
+import com.hanthienduc.newestmovie.listing.ListingModule;
 import com.hanthienduc.newestmovie.network.NetworkModule;
 
 import javax.inject.Singleton;
@@ -14,4 +16,5 @@ import dagger.Component;
 })
 public interface AppComponent {
 
+    ListingComponent plus(ListingModule listingModule);
 }

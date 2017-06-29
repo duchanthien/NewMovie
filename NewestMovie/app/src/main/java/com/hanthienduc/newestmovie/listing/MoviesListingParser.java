@@ -51,10 +51,13 @@ public class MoviesListingParser {
             movie.setOverview(result.getString(OVERVIEW));
         }
         if (!result.isNull(RELEASE_DATE)) {
-            movie.setReleaseDate(result.getString(RELEASE_DATE));
+            movie.setReleaseDate(String.valueOf(result.getString(RELEASE_DATE)));
         }
         if (!result.isNull(POSTER_PATH)) {
             movie.setPosterPath(Api.POSTER_PATH + result.getString(POSTER_PATH));
+        }
+        if (!result.isNull(BACKDROP_PATH)) {
+            movie.setBackdropPath(Api.BACKDROP_PATH + result.getString(BACKDROP_PATH));
         }
         if (!result.isNull(TITLE)) {
             movie.setTitle(result.getString(TITLE));
