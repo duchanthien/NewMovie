@@ -35,7 +35,7 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(getString(R.string.movie_new));
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
         }
     }
 
