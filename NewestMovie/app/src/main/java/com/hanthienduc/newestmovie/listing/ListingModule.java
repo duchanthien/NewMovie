@@ -1,5 +1,6 @@
 package com.hanthienduc.newestmovie.listing;
 
+import com.hanthienduc.newestmovie.listing.sorting.SortingOptionStore;
 import com.hanthienduc.newestmovie.network.RequestHandler;
 
 import dagger.Module;
@@ -9,8 +10,8 @@ import dagger.Provides;
 public class ListingModule {
 
     @Provides
-    MoviesListingInteractor provideMovieListingInteractor(RequestHandler requestHandler) {
-        return new MoviesListingInteractorImpl(requestHandler);
+    MoviesListingInteractor provideMovieListingInteractor(RequestHandler requestHandler, SortingOptionStore sortingOptionStore) {
+        return new MoviesListingInteractorImpl(requestHandler, sortingOptionStore);
     }
 
     @Provides

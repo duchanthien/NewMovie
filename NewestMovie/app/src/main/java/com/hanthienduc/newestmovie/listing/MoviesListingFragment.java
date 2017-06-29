@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.hanthienduc.newestmovie.BaseApplication;
 import com.hanthienduc.newestmovie.R;
+import com.hanthienduc.newestmovie.listing.sorting.SortingDialogFragment;
 import com.hanthienduc.newestmovie.models.Movie;
 
 import java.util.ArrayList;
@@ -79,7 +81,8 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     }
 
     private void displaySortingOptions() {
-
+        DialogFragment sortingDialogFragment = SortingDialogFragment.newInstance(moviesPresenter);
+        sortingDialogFragment.show(getFragmentManager(), "Select Quantity");
     }
 
     @Override
@@ -123,7 +126,7 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     @Override
     public void loadingFailed(String errorMessage) {
         Snackbar.make(moviesListing, errorMessage, Snackbar.LENGTH_INDEFINITE).show();
-        Log.e(MoviesListingFragment.class.getSimpleName(),errorMessage);
+        Log.e(MoviesListingFragment.class.getSimpleName(), errorMessage);
     }
 
     @Override
