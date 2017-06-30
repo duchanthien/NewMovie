@@ -1,5 +1,6 @@
 package com.hanthienduc.newestmovie.details;
 
+import com.hanthienduc.newestmovie.favorites.FavoritesInteractor;
 import com.hanthienduc.newestmovie.models.Movie;
 import com.hanthienduc.newestmovie.models.Review;
 import com.hanthienduc.newestmovie.models.Video;
@@ -15,11 +16,13 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
 
     private MovieDetailsView view;
     private MovieDetailsInteractor movieDetailsInteractor;
+    private FavoritesInteractor favoritesInteractor;
     private Subscription trailersSubscription;
     private Subscription reviewSubscription;
 
-    MovieDetailsPresenterImpl(MovieDetailsInteractor movieDetailsInteractor) {
+    MovieDetailsPresenterImpl(MovieDetailsInteractor movieDetailsInteractor, FavoritesInteractor favoritesInteractor) {
         this.movieDetailsInteractor = movieDetailsInteractor;
+        this.favoritesInteractor = favoritesInteractor;
     }
 
     @Override
@@ -80,28 +83,28 @@ public class MovieDetailsPresenterImpl implements MovieDetailsPresenter {
 
     @Override
     public void showFavoriteButton(Movie movie) {
-       /* boolean isFavorite = favoritesInteractor.isFavorite(movie.getId());
-        if(isViewAttached()){
-            if(isFavorite){
+        boolean isFavorite = favoritesInteractor.isFavorite(movie.getId());
+        if (isViewAttached()) {
+            if (isFavorite) {
                 view.showFavorited();
-            }else{
+            } else {
                 view.showUnFavorited();
             }
-        }*/
+        }
     }
 
     @Override
     public void onFavoriteClick(Movie movie) {
-        /*if(isViewAttached()){
+        if (isViewAttached()) {
             boolean isFavorite = favoritesInteractor.isFavorite(movie.getId());
-            if(isFavorite){
+            if (isFavorite) {
                 favoritesInteractor.unFavorite(movie.getId());
                 view.showUnFavorited();
-            }else {
+            } else {
                 favoritesInteractor.setFavorite(movie);
                 view.showFavorited();
             }
-        }*/
+        }
     }
 
 }
