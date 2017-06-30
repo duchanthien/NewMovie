@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:lineSpacingMultiplier="1.2"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/holo_blue_light"
         tools:text="Travis Bell" />
 
     <TextView
@@ -26,6 +26,6 @@
         android:fontFamily="sans-serif-light"
         android:maxLines="5"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/holo_blue_light"
         tools:text="" />
 </LinearLayout>

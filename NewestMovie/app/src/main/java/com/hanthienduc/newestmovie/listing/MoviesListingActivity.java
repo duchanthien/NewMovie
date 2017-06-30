@@ -1,11 +1,15 @@
 package com.hanthienduc.newestmovie.listing;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.hanthienduc.newestmovie.Constants;
 import com.hanthienduc.newestmovie.R;
+import com.hanthienduc.newestmovie.details.MovieDetailsActivity;
+import com.hanthienduc.newestmovie.details.MovieDetailsFragment;
 import com.hanthienduc.newestmovie.models.Movie;
 
 public class MoviesListingActivity extends AppCompatActivity implements MoviesListingFragment.Callback {
@@ -19,15 +23,15 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
         setContentView(R.layout.activity_main);
         setToolbar();
 
-       /* if (findViewById(R.id.movie_details_container) != null) {
+        if (findViewById(R.id.movie_details_container) != null) {
             twoPaneMode = true;
-           *//* if(savedInstanceState == null){
+            if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.movie_details_container,new Mov)
-            }*//*
+                        .replace(R.id.movie_details_container, new MovieDetailsFragment());
+            }
         } else {
             twoPaneMode = false;
-        }*/
+        }
     }
 
     private void setToolbar() {
@@ -47,35 +51,35 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
 
     @Override
     public void onMoviesLoaded(Movie movie) {
-        /*if (twoPaneMode) {
+        if (twoPaneMode) {
             loadMovieFragment(movie);
         } else {
 
-        }*/
+        }
     }
 
     @Override
     public void onMovieClicked(Movie movie) {
-       /* if (twoPaneMode) {
+        if (twoPaneMode) {
             loadMovieFragment(movie);
         } else {
             startMovieActivity(movie);
-        }*/
+        }
     }
 
     private void loadMovieFragment(Movie movie) {
-        /*MovieDetailsFragment movieDetailsFragment = MovieDetailsFragment.getInstance(movie);
+        MovieDetailsFragment movieDetailsFragment = MovieDetailsFragment.getInstance(movie);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.movie_details_container, movieDetailsFragment, DETAILS_FRAGMENT)
-                .commit();*/
+                .commit();
     }
 
     private void startMovieActivity(Movie movie) {
-        /*Intent intent = new Intent(this, MovieDetailActivity.class);
+        Intent intent = new Intent(this, MovieDetailsActivity.class);
         Bundle extras = new Bundle();
         extras.putParcelable(Constants.MOVIE, movie);
         intent.putExtras(extras);
-        startActivity(intent);*/
+        startActivity(intent);
     }
 
 
