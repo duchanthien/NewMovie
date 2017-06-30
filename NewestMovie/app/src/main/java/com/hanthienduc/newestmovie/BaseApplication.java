@@ -5,6 +5,7 @@ import android.os.StrictMode;
 
 import com.hanthienduc.newestmovie.details.DetailsComponent;
 import com.hanthienduc.newestmovie.details.DetailsModule;
+import com.hanthienduc.newestmovie.favorites.FavoritesModule;
 import com.hanthienduc.newestmovie.listing.ListingComponent;
 import com.hanthienduc.newestmovie.listing.ListingModule;
 import com.hanthienduc.newestmovie.network.NetworkModule;
@@ -25,6 +26,7 @@ public class BaseApplication extends Application {
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .networkModule(new NetworkModule())
+                .favoritesModule(new FavoritesModule())
                 .build();
     }
 

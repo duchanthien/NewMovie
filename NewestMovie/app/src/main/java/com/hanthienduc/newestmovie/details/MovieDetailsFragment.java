@@ -36,6 +36,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by hanth on 30/06/2017.
@@ -204,16 +205,16 @@ public class MovieDetailsFragment extends Fragment implements MovieDetailsView, 
 
     @Override
     public void showFavorited() {
-
+        favorite.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_favorite_white_24dp));
     }
 
     @Override
     public void showUnFavorited() {
-
+        favorite.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_favorite_border_white_24dp));
     }
 
 
-    @Override
+    @OnClick(R.id.favorite)
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.video_thumb:

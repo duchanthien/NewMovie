@@ -1,5 +1,6 @@
 package com.hanthienduc.newestmovie.details;
 
+import com.hanthienduc.newestmovie.favorites.FavoritesInteractor;
 import com.hanthienduc.newestmovie.network.RequestHandler;
 
 import dagger.Module;
@@ -16,7 +17,7 @@ public class DetailsModule {
 
     @Provides
     @DetailsScope
-    MovieDetailsPresenter providePresenter(MovieDetailsInteractor detailsInteractor) {
-        return new MovieDetailsPresenterImpl(detailsInteractor);
+    MovieDetailsPresenter providePresenter(MovieDetailsInteractor detailsInteractor, FavoritesInteractor favoritesInteractor) {
+        return new MovieDetailsPresenterImpl(detailsInteractor, favoritesInteractor);
     }
 }

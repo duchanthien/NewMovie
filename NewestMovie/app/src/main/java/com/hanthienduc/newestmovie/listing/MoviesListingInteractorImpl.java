@@ -3,6 +3,7 @@ package com.hanthienduc.newestmovie.listing;
 import android.support.annotation.NonNull;
 
 import com.hanthienduc.newestmovie.Api;
+import com.hanthienduc.newestmovie.favorites.FavoritesInteractor;
 import com.hanthienduc.newestmovie.listing.sorting.SortType;
 import com.hanthienduc.newestmovie.listing.sorting.SortingOptionStore;
 import com.hanthienduc.newestmovie.models.Movie;
@@ -21,11 +22,13 @@ public class MoviesListingInteractorImpl implements MoviesListingInteractor {
 
     private RequestHandler requestHandler;
     private SortingOptionStore sortingOptionStore;
+    private FavoritesInteractor favoritesInteractor;
 
     MoviesListingInteractorImpl(RequestHandler requestHandler,
-                                SortingOptionStore store) {
+                                SortingOptionStore store, FavoritesInteractor favoritesInteractor) {
         this.requestHandler = requestHandler;
         this.sortingOptionStore = store;
+        this.favoritesInteractor = favoritesInteractor;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class MoviesListingInteractorImpl implements MoviesListingInteractor {
         } else if (selectedOption == SortType.HIGHEST_RATED.getValue()) {
             return fetMovieList(Api.GET_HIGHEST_RATED_MOVIES);
         }
-        return fetMovieList(Api.GET_POPULAR_MOVIES);
+        return favoritesInteractor.getFavorites();
 
     }
 
