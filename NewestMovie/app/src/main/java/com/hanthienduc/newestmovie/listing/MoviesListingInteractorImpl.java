@@ -38,10 +38,14 @@ public class MoviesListingInteractorImpl implements MoviesListingInteractor {
 
     private List<Movie> getMoviesList() throws IOException, JSONException {
         int selectedOption = sortingOptionStore.getSelectedOption();
-        if (selectedOption == SortType.MOST_POPULAR.getValue()) {
+        if (selectedOption == SortType.UPCOMING.getValue()) {
+            return fetMovieList(Api.GET_UPCOMING_MOVIES);
+        } else if (selectedOption == SortType.MOST_POPULAR.getValue()) {
             return fetMovieList(Api.GET_POPULAR_MOVIES);
-        } else if (selectedOption == SortType.HIGHEST_RATED.getValue()) {
-            return fetMovieList(Api.GET_HIGHEST_RATED_MOVIES);
+        } else if (selectedOption == SortType.NOW_PLAYING.getValue()) {
+            return fetMovieList(Api.GET_NOW_PLAYING);
+        } else if (selectedOption == SortType.TOP_RATED.getValue()) {
+            return fetMovieList(Api.GET_TOP_RATED_MOVIES);
         }
         return favoritesInteractor.getFavorites();
 

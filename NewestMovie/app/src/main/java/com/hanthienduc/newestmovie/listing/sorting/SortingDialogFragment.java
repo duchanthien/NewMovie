@@ -26,10 +26,14 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     @Inject
     SortingDialogPresenter sortingDialogPresenter;
 
+    @Bind(R.id.upcoming)
+    RadioButton upcoming;
     @Bind(R.id.most_popular)
     RadioButton mostPopular;
-    @Bind(R.id.highest_rated)
-    RadioButton highestRated;
+    @Bind(R.id.now_playing)
+    RadioButton nowPlaying;
+    @Bind(R.id.top_rated)
+    RadioButton topRated;
     @Bind(R.id.favorites)
     RadioButton favorites;
     @Bind(R.id.sorting_group)
@@ -71,13 +75,23 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     }
 
     @Override
+    public void setUpcomingChecked() {
+        upcoming.setChecked(true);
+    }
+
+    @Override
     public void setPopularChecked() {
         mostPopular.setChecked(true);
     }
 
     @Override
-    public void setHighestRatedChecked() {
-        highestRated.setChecked(true);
+    public void setNowPlayingChecked() {
+        nowPlaying.setChecked(true);
+    }
+
+    @Override
+    public void setTopRatedChecked() {
+        topRated.setChecked(true);
     }
 
     @Override
@@ -88,12 +102,20 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         switch (checkedId) {
+            case R.id.upcoming:
+                sortingDialogPresenter.onUpcomingMoviesSelected();
+                moviesListingPresenter.displayMovies();
+                break;
             case R.id.most_popular:
                 sortingDialogPresenter.onPopularMoviesSelected();
                 moviesListingPresenter.displayMovies();
                 break;
-            case R.id.highest_rated:
-                sortingDialogPresenter.onHighestRatedMoviesSelected();
+            case R.id.now_playing:
+                sortingDialogPresenter.onNowPlayingMoviesSelected();
+                moviesListingPresenter.displayMovies();
+                break;
+            case R.id.top_rated:
+                sortingDialogPresenter.onTopRatedMoviesSelected();
                 moviesListingPresenter.displayMovies();
                 break;
             case R.id.favorites:

@@ -18,13 +18,25 @@ class SortingDialogPresenterImpl implements SortingDialogPresenter {
     public void setLastSavedOption() {
         if (isViewAttached()) {
             int selectedOption = sortingDialogInteractor.getSelectedSortingOption();
-            if (selectedOption == SortType.MOST_POPULAR.getValue()) {
+            if (selectedOption == SortType.UPCOMING.getValue()) {
+                view.setUpcomingChecked();
+            } else if (selectedOption == SortType.MOST_POPULAR.getValue()) {
                 view.setPopularChecked();
-            } else if (selectedOption == SortType.HIGHEST_RATED.getValue()) {
-                view.setHighestRatedChecked();
+            } else if (selectedOption == SortType.NOW_PLAYING.getValue()) {
+                view.setNowPlayingChecked();
+            } else if (selectedOption == SortType.TOP_RATED.getValue()) {
+                view.setTopRatedChecked();
             } else {
                 view.setFavoritesChecked();
             }
+        }
+    }
+
+    @Override
+    public void onUpcomingMoviesSelected() {
+        if (isViewAttached()) {
+            sortingDialogInteractor.setSortingOption(SortType.UPCOMING);
+            view.setDimissDialog();
         }
     }
 
@@ -41,9 +53,17 @@ class SortingDialogPresenterImpl implements SortingDialogPresenter {
     }
 
     @Override
-    public void onHighestRatedMoviesSelected() {
+    public void onNowPlayingMoviesSelected() {
         if (isViewAttached()) {
-            sortingDialogInteractor.setSortingOption(SortType.HIGHEST_RATED);
+            sortingDialogInteractor.setSortingOption(SortType.NOW_PLAYING);
+            view.setDimissDialog();
+        }
+    }
+
+    @Override
+    public void onTopRatedMoviesSelected() {
+        if (isViewAttached()) {
+            sortingDialogInteractor.setSortingOption(SortType.TOP_RATED);
             view.setDimissDialog();
         }
     }
