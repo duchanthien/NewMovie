@@ -15,3 +15,12 @@ new movie app using themoviedb api
 ![Imgur](http://i.imgur.com/F97XBYm.png)
 ![Imgur](http://i.imgur.com/RCYrj0u.png)
 ![Imgur](http://i.imgur.com/VlV1k3i.png)
+
+# Dependencies
+* RxJava, RxAndroid
+* Okhttp3, Okhttp3:logging-interceptor
+* Glide
+* Glide:okhttp3-integration
+* Picasso
+* Butterknife
+* Dagger
