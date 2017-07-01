@@ -49,6 +49,7 @@ public class MoviesListingActivity extends AppCompatActivity implements MoviesLi
         return true;
     }
 
+
     @Override
     public void onMoviesLoaded(Movie movie) {
         if (twoPaneMode) {

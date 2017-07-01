@@ -25,7 +25,7 @@ public class MoviesListingParser {
 
     @NonNull
     public static List<Movie> parse(String json) throws JSONException {
-        List<Movie> movies = new ArrayList<>(24);
+        List<Movie> movies = new ArrayList<>();
         JSONObject response = new JSONObject(json);
 
         if (!response.isNull(RESULTS)) {

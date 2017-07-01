@@ -76,6 +76,9 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
             case R.id.action_sort:
                 displaySortingOptions();
                 break;
+            case R.id.action_settings:
+                Snackbar.make(moviesListing, "Action Settings is clicked", Snackbar.LENGTH_SHORT).show();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
