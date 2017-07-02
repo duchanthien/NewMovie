@@ -16,6 +16,9 @@ new movie app using themoviedb api
 * Top Rated TV Shows
 ## Favorites
 * In the development process.
+# Link Download
+
+![Imgur](http://i.imgur.com/aDTsXsO.png)
 
 # Screenshot
 ![Imgur](http://i.imgur.com/7dVGh1e.png)
