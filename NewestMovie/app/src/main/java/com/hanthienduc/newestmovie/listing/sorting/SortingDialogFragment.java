@@ -25,13 +25,12 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
 
     @Inject
     SortingDialogPresenter sortingDialogPresenter;
-
+    @Bind(R.id.now_playing)
+    RadioButton nowPlaying;
     @Bind(R.id.upcoming)
     RadioButton upcoming;
     @Bind(R.id.most_popular)
     RadioButton mostPopular;
-    @Bind(R.id.now_playing)
-    RadioButton nowPlaying;
     @Bind(R.id.top_rated)
     RadioButton topRated;
     @Bind(R.id.favorites)
@@ -74,6 +73,12 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
         sortingOptionsGroup.setOnCheckedChangeListener(this);
     }
 
+
+    @Override
+    public void setNowPlayingChecked() {
+        nowPlaying.setChecked(true);
+    }
+
     @Override
     public void setUpcomingChecked() {
         upcoming.setChecked(true);
@@ -82,11 +87,6 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     @Override
     public void setPopularChecked() {
         mostPopular.setChecked(true);
-    }
-
-    @Override
-    public void setNowPlayingChecked() {
-        nowPlaying.setChecked(true);
     }
 
     @Override
@@ -102,16 +102,16 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         switch (checkedId) {
+            case R.id.now_playing:
+                sortingDialogPresenter.onNowPlayingMoviesSelected();
+                moviesListingPresenter.displayMovies();
+                break;
             case R.id.upcoming:
                 sortingDialogPresenter.onUpcomingMoviesSelected();
                 moviesListingPresenter.displayMovies();
                 break;
             case R.id.most_popular:
                 sortingDialogPresenter.onPopularMoviesSelected();
-                moviesListingPresenter.displayMovies();
-                break;
-            case R.id.now_playing:
-                sortingDialogPresenter.onNowPlayingMoviesSelected();
                 moviesListingPresenter.displayMovies();
                 break;
             case R.id.top_rated:

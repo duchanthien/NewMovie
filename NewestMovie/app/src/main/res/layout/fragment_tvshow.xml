@@ -2,15 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listing.MoviesListingFragment">
+    tools:context=".tvshow.TVShowListingFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/movies_listing"
+        android:id="@+id/tvshow_listing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         android:visibility="gone" />
-
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

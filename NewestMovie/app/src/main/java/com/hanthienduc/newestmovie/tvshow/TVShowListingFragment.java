@@ -1,13 +1,13 @@
-package com.hanthienduc.newestmovie.listing;
+package com.hanthienduc.newestmovie.tvshow;
 
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +17,8 @@ import android.widget.Toast;
 
 import com.hanthienduc.newestmovie.BaseApplication;
 import com.hanthienduc.newestmovie.R;
-import com.hanthienduc.newestmovie.listing.sorting.SortingDialogFragment;
 import com.hanthienduc.newestmovie.models.Movie;
+import com.hanthienduc.newestmovie.tvshow.sorting.TVSortingDialogFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,30 +28,29 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MoviesListingFragment extends Fragment implements MoviesListingView {
+public class TVShowListingFragment extends Fragment implements TVShowListingView {
 
     @Inject
-    MoviesListingPresenter moviesPresenter;
+    TVShowListingPresenter tvShowPresenter;
 
-    @Bind(R.id.movies_listing)
-    RecyclerView moviesListing;
-
+    @Bind(R.id.tvshow_listing)
+    RecyclerView tvShowsListing;
     @Bind(R.id.progressBar)
-    ProgressBar myProgressBar;
+    ProgressBar progressBar;
 
     private RecyclerView.Adapter adapter;
-    private List<Movie> movies = new ArrayList<>();
+    private List<Movie> tvShowModels = new ArrayList<>();
     private Callback callback;
 
     BaseApplication baseApplication;
 
-    public MoviesListingFragment() {
-        // Required empty public constructor
+    public TVShowListingFragment() {
+
     }
 
-    public static MoviesListingFragment newInstance() {
-        MoviesListingFragment fragment = new MoviesListingFragment();
-        return fragment;
+    public static TVShowListingFragment newInstance() {
+        TVShowListingFragment TVShowListingFragment = new TVShowListingFragment();
+        return TVShowListingFragment;
     }
 
     @Override
@@ -63,16 +62,16 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        baseApplication = (BaseApplication) getActivity().getApplication();
+        baseApplication = (BaseApplication) getActivity().getApplicationContext();
         setHasOptionsMenu(true);
         setRetainInstance(true);
-        baseApplication.createListingComponent().inject(this);
+        baseApplication.createTVShowComponent().inject(this);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_movies, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tvshow, container, false);
         ButterKnife.bind(this, rootView);
         initLayoutReferences();
         return rootView;
@@ -89,20 +88,18 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     }
 
     private void displaySortingOptions() {
-        DialogFragment sortingDialogFragment = SortingDialogFragment.newInstance(moviesPresenter);
-        sortingDialogFragment.show(getFragmentManager(), "Select Quantity");
+        TVSortingDialogFragment dialogFragment = TVSortingDialogFragment.newInstance(tvShowPresenter);
+        dialogFragment.show(getFragmentManager(),"Select Quantity");
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        moviesPresenter.setView(this);
+        tvShowPresenter.setView(this);
     }
 
-
     private void initLayoutReferences() {
-        moviesListing.setHasFixedSize(true);
-
+        tvShowsListing.setHasFixedSize(true);
         int columns;
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             columns = 2;
@@ -110,26 +107,25 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
             columns = getResources().getInteger(R.integer.no_of_columns);
         }
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), columns);
-
-        moviesListing.setLayoutManager(layoutManager);
-        adapter = new MoviesListingAdapter(movies, this);
-        moviesListing.setAdapter(adapter);
+        tvShowsListing.setLayoutManager(layoutManager);
+        adapter = new TVShowListingAdapter(tvShowModels, this);
+        tvShowsListing.setAdapter(adapter);
     }
 
-
     @Override
-    public void showMovies(List<Movie> movies) {
-        this.movies.clear();
-        this.movies.addAll(movies);
-        moviesListing.setVisibility(View.VISIBLE);
+    public void showTVShows(List<Movie> tvShowModels) {
+        Log.d("Show views", tvShowModels.toString());
+        this.tvShowModels.clear();
+        this.tvShowModels.addAll(tvShowModels);
+        tvShowsListing.setVisibility(View.VISIBLE);
         adapter.notifyDataSetChanged();
-        callback.onMoviesLoaded(movies.get(0));
-        myProgressBar.setVisibility(View.GONE);
+        callback.onTVShowLoaded(this.tvShowModels.get(0));
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void loadingStarted() {
-        myProgressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -138,14 +134,14 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     }
 
     @Override
-    public void onMovieClicked(Movie movie) {
-        callback.onMovieClicked(movie);
+    public void onTVShowClicked(Movie tvShowModel) {
+        callback.onTVShowClicked(tvShowModel);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        moviesPresenter.destroy();
+        tvShowPresenter.destroy();
         ButterKnife.unbind(this);
     }
 
@@ -158,12 +154,12 @@ public class MoviesListingFragment extends Fragment implements MoviesListingView
     @Override
     public void onDestroy() {
         super.onDestroy();
-        baseApplication.releaseListingComponent();
+        baseApplication.releaseTVShowComponent();
     }
 
     public interface Callback {
-        void onMoviesLoaded(Movie movie);
+        void onTVShowLoaded(Movie movie);
 
-        void onMovieClicked(Movie movie);
+        void onTVShowClicked(Movie movie);
     }
 }
