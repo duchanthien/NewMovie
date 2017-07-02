@@ -4,11 +4,18 @@ new movie app using themoviedb api
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=595637cf01b1b20001bdd103&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/595637cf01b1b20001bdd103/build/latest?branch=master)
 
 # Feature
-* Show Upcoming Movies
-* Show Most Popular Movies 
-* Show Nowplaying Movies
-* Show Top Rated Movies
-* Show User Favorites Movies 
+## Movies
+* Upcoming Movies
+* Popular Movies 
+* Nowplaying Movies
+* Top Rated Movies
+## TVShows
+* Airting Today TV Shows
+* On The Air TV Shows
+* Popular TV Shows
+* Top Rated TV Shows
+## Favorites
+* In the development process.
 
 # Screenshot
 ![Imgur](http://i.imgur.com/7dVGh1e.png)
