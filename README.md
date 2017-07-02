@@ -13,7 +13,7 @@ new movie app using themoviedb api
 # Screenshot
 ![Imgur](http://i.imgur.com/7dVGh1e.png)
 ![Imgur](http://i.imgur.com/3oUBddU.png)
-![Imgur](http://i.imgur.com/jXOZ7ta.png)
+![Imgur](http://i.imgur.com/mVRCA6E.png)
 ![Imgur](http://i.imgur.com/8Npix0B.png)
 ![Imgur](http://i.imgur.com/CJjm8T7.png)
 ![Imgur](http://i.imgur.com/jevD59S.png)
