@@ -9,11 +9,14 @@ import com.hanthienduc.newestmovie.favorites.FavoritesModule;
 import com.hanthienduc.newestmovie.listing.ListingComponent;
 import com.hanthienduc.newestmovie.listing.ListingModule;
 import com.hanthienduc.newestmovie.network.NetworkModule;
+import com.hanthienduc.newestmovie.tvshow.TVShowComponent;
+import com.hanthienduc.newestmovie.tvshow.TVShowModule;
 
 public class BaseApplication extends Application {
     private AppComponent appComponent;
     private ListingComponent listingComponent;
     private DetailsComponent detailsComponent;
+    private TVShowComponent tvShowComponent;
 
     @Override
     public void onCreate() {
@@ -39,8 +42,21 @@ public class BaseApplication extends Application {
         listingComponent = null;
     }
 
+    public TVShowComponent createTVShowComponent() {
+        tvShowComponent = appComponent.plus(new TVShowModule());
+        return tvShowComponent;
+    }
+
+    public void releaseTVShowComponent() {
+        tvShowComponent = null;
+    }
+
     public ListingComponent getListingComponent() {
         return listingComponent;
+    }
+
+    public TVShowComponent getTvShowComponent() {
+        return tvShowComponent;
     }
 
     public DetailsComponent createDetailsComponent() {

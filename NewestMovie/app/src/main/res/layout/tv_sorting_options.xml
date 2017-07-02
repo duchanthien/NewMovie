@@ -12,24 +12,24 @@
         android:orientation="vertical">
 
         <RadioButton
-            android:id="@+id/now_playing"
+            android:id="@+id/airing_today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
-            android:text="@string/now_playing" />
+            android:text="@string/airing_today" />
 
         <RadioButton
-            android:id="@+id/upcoming"
+            android:id="@+id/on_the_air"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
-            android:text="@string/upcoming" />
+            android:text="@string/on_the_air" />
 
         <RadioButton
             android:id="@+id/most_popular"
@@ -39,7 +39,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="8dp"
-            android:text="@string/most_popular" />
+            android:text="@string/popular" />
 
         <RadioButton
             android:id="@+id/top_rated"
@@ -50,16 +50,6 @@
             android:paddingRight="16dp"
             android:paddingTop="8dp"
             android:text="@string/top_rated" />
-
-        <RadioButton
-            android:id="@+id/favorites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
-            android:text="@string/favorites" />
 
     </RadioGroup>
 </LinearLayout>

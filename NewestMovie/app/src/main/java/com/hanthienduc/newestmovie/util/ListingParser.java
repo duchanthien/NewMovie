@@ -1,4 +1,4 @@
-package com.hanthienduc.newestmovie.listing;
+package com.hanthienduc.newestmovie.util;
 
 import android.support.annotation.NonNull;
 
@@ -12,19 +12,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MoviesListingParser {
+public class ListingParser {
 
     public static final String RESULTS = "results";
     public static final String OVERVIEW = "overview";
     public static final String RELEASE_DATE = "release_date";
+    public static final String FIRST_AIR_DATE = "first_air_date";
     public static final String POSTER_PATH = "poster_path";
     public static final String TITLE = "title";
+    public static final String NAME = "name";
     public static final String VOTE_AVERAGE = "vote_average";
     public static final String BACKDROP_PATH = "backdrop_path";
     public static final String ID = "id";
 
     @NonNull
-    public static List<Movie> parse(String json) throws JSONException {
+    public static List<Movie> parseMovie(String json) throws JSONException {
         List<Movie> movies = new ArrayList<>();
         JSONObject response = new JSONObject(json);
 
@@ -52,6 +54,8 @@ public class MoviesListingParser {
         }
         if (!result.isNull(RELEASE_DATE)) {
             movie.setReleaseDate(String.valueOf(result.getString(RELEASE_DATE)));
+        } else if (!result.isNull(FIRST_AIR_DATE)) {
+            movie.setReleaseDate(String.valueOf(result.getString(FIRST_AIR_DATE)));
         }
         if (!result.isNull(POSTER_PATH)) {
             movie.setPosterPath(Api.POSTER_PATH + result.getString(POSTER_PATH));
@@ -61,6 +65,8 @@ public class MoviesListingParser {
         }
         if (!result.isNull(TITLE)) {
             movie.setTitle(result.getString(TITLE));
+        } else if (!result.isNull(NAME)) {
+            movie.setTitle(result.getString(NAME));
         }
         if (!result.isNull(VOTE_AVERAGE)) {
             movie.setVoteAverage(result.getDouble(VOTE_AVERAGE));

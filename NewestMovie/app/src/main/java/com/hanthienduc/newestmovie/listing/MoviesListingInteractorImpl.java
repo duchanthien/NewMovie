@@ -9,6 +9,7 @@ import com.hanthienduc.newestmovie.listing.sorting.SortingOptionStore;
 import com.hanthienduc.newestmovie.models.Movie;
 import com.hanthienduc.newestmovie.network.RequestGenerator;
 import com.hanthienduc.newestmovie.network.RequestHandler;
+import com.hanthienduc.newestmovie.util.ListingParser;
 
 import org.json.JSONException;
 
@@ -38,12 +39,12 @@ public class MoviesListingInteractorImpl implements MoviesListingInteractor {
 
     private List<Movie> getMoviesList() throws IOException, JSONException {
         int selectedOption = sortingOptionStore.getSelectedOption();
-        if (selectedOption == SortType.UPCOMING.getValue()) {
+        if (selectedOption == SortType.NOW_PLAYING.getValue()) {
+            return fetMovieList(Api.GET_NOW_PLAYING);
+        } else if (selectedOption == SortType.UPCOMING.getValue()) {
             return fetMovieList(Api.GET_UPCOMING_MOVIES);
         } else if (selectedOption == SortType.MOST_POPULAR.getValue()) {
             return fetMovieList(Api.GET_POPULAR_MOVIES);
-        } else if (selectedOption == SortType.NOW_PLAYING.getValue()) {
-            return fetMovieList(Api.GET_NOW_PLAYING);
         } else if (selectedOption == SortType.TOP_RATED.getValue()) {
             return fetMovieList(Api.GET_TOP_RATED_MOVIES);
         }
@@ -55,6 +56,6 @@ public class MoviesListingInteractorImpl implements MoviesListingInteractor {
     private List<Movie> fetMovieList(String url) throws IOException, JSONException {
         Request request = RequestGenerator.get(url);
         String response = requestHandler.request(request);
-        return MoviesListingParser.parse(response);
+        return ListingParser.parseMovie(response);
     }
 }

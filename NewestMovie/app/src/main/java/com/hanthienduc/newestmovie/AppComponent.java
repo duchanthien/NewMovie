@@ -7,6 +7,8 @@ import com.hanthienduc.newestmovie.favorites.FavoritesModule;
 import com.hanthienduc.newestmovie.listing.ListingComponent;
 import com.hanthienduc.newestmovie.listing.ListingModule;
 import com.hanthienduc.newestmovie.network.NetworkModule;
+import com.hanthienduc.newestmovie.tvshow.TVShowComponent;
+import com.hanthienduc.newestmovie.tvshow.TVShowModule;
 
 import javax.inject.Singleton;
 
@@ -21,6 +23,8 @@ import dagger.Component;
 public interface AppComponent {
 
     ListingComponent plus(ListingModule listingModule);
+
+    TVShowComponent plus(TVShowModule tvShowModule);
 
     DetailsComponent plus(DetailsModule detailsModule);
 }
