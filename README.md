@@ -11,7 +11,7 @@ new movie app using themoviedb api
 * Show User Favorites Movies 
 
 # Screenshot
-![Imgur](http://i.imgur.com/SBZH9X2.png){:height="480px" width="320px"
+![Imgur](http://i.imgur.com/SBZH9X2.png){:height="50%" width="50%"}
 ![Imgur](http://i.imgur.com/F97XBYm.png)
 ![Imgur](http://i.imgur.com/RCYrj0u.png)
 ![Imgur](http://i.imgur.com/VlV1k3i.png)
