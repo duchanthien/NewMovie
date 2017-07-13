@@ -11,8 +11,6 @@ public interface SortingDialogPresenter {
 
     void onTopRatedMoviesSelected();
 
-    void onFavoritesSelected();
-
     void setView(SortingDialogView view);
 
     void destroy();

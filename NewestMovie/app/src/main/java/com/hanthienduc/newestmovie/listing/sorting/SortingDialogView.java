@@ -10,7 +10,5 @@ interface SortingDialogView {
 
     void setTopRatedChecked();
 
-    void setFavoritesChecked();
-
     void setDimissDialog();
 }

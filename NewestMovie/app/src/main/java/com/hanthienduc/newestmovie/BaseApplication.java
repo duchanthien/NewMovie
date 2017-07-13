@@ -5,6 +5,7 @@ import android.os.StrictMode;
 
 import com.hanthienduc.newestmovie.details.DetailsComponent;
 import com.hanthienduc.newestmovie.details.DetailsModule;
+import com.hanthienduc.newestmovie.favorites.FavoritesComponent;
 import com.hanthienduc.newestmovie.favorites.FavoritesModule;
 import com.hanthienduc.newestmovie.listing.ListingComponent;
 import com.hanthienduc.newestmovie.listing.ListingModule;
@@ -16,6 +17,7 @@ public class BaseApplication extends Application {
     private AppComponent appComponent;
     private ListingComponent listingComponent;
     private DetailsComponent detailsComponent;
+    private FavoritesComponent favoritesComponent;
     private TVShowComponent tvShowComponent;
 
     @Override
@@ -29,7 +31,7 @@ public class BaseApplication extends Application {
         return DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .networkModule(new NetworkModule())
-                .favoritesModule(new FavoritesModule())
+               // .favoritesModule(new FavoritesModule())
                 .build();
     }
 
@@ -40,6 +42,15 @@ public class BaseApplication extends Application {
 
     public void releaseListingComponent() {
         listingComponent = null;
+    }
+
+    public FavoritesComponent createFavoritesComponent() {
+        favoritesComponent = appComponent.plus(new FavoritesModule());
+        return favoritesComponent;
+    }
+
+    public void releaseFavoritesComponent() {
+        favoritesComponent = null;
     }
 
     public TVShowComponent createTVShowComponent() {
@@ -59,6 +70,10 @@ public class BaseApplication extends Application {
         return tvShowComponent;
     }
 
+    /* public FavoritesComponent getFavoritesComponent() {
+         return favoritesComponent;
+     }
+ */
     public DetailsComponent createDetailsComponent() {
         detailsComponent = appComponent.plus(new DetailsModule());
         return detailsComponent;

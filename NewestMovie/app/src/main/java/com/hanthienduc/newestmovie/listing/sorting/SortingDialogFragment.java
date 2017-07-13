@@ -33,8 +33,6 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     RadioButton mostPopular;
     @Bind(R.id.top_rated)
     RadioButton topRated;
-    @Bind(R.id.favorites)
-    RadioButton favorites;
     @Bind(R.id.sorting_group)
     RadioGroup sortingOptionsGroup;
 
@@ -95,11 +93,6 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
     }
 
     @Override
-    public void setFavoritesChecked() {
-        favorites.setChecked(true);
-    }
-
-    @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         switch (checkedId) {
             case R.id.now_playing:
@@ -116,10 +109,6 @@ public class SortingDialogFragment extends DialogFragment implements SortingDial
                 break;
             case R.id.top_rated:
                 sortingDialogPresenter.onTopRatedMoviesSelected();
-                moviesListingPresenter.displayMovies();
-                break;
-            case R.id.favorites:
-                sortingDialogPresenter.onFavoritesSelected();
                 moviesListingPresenter.displayMovies();
                 break;
         }

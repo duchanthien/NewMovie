@@ -27,7 +27,7 @@ class SortingDialogPresenterImpl implements SortingDialogPresenter {
             } else if (selectedOption == SortType.TOP_RATED.getValue()) {
                 view.setTopRatedChecked();
             } else {
-                view.setFavoritesChecked();
+                view.setPopularChecked();
             }
         }
     }
@@ -64,14 +64,6 @@ class SortingDialogPresenterImpl implements SortingDialogPresenter {
     public void onTopRatedMoviesSelected() {
         if (isViewAttached()) {
             sortingDialogInteractor.setSortingOption(SortType.TOP_RATED);
-            view.setDimissDialog();
-        }
-    }
-
-    @Override
-    public void onFavoritesSelected() {
-        if (isViewAttached()) {
-            sortingDialogInteractor.setSortingOption(SortType.FAVORITES);
             view.setDimissDialog();
         }
     }

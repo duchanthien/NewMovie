@@ -2,7 +2,7 @@ package com.hanthienduc.newestmovie.listing.sorting;
 
 public enum SortType {
 
-    NOW_PLAYING(0),UPCOMING(1), MOST_POPULAR(2), TOP_RATED(3), FAVORITES(4);
+    NOW_PLAYING(0),UPCOMING(1), MOST_POPULAR(2), TOP_RATED(3);
 
     private final int value;
 

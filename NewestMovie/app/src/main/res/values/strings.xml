@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NewestMovie</string>
+    <string name="app_name">Movie Guide</string>
     <string name="action_filter">Filter</string>
     <string name="sort_by">Sort By</string>
     <string name="movie_new">NewestMovie</string>

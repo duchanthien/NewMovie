@@ -13,6 +13,7 @@ import android.view.MenuItem;
 
 import com.hanthienduc.newestmovie.details.MovieDetailsActivity;
 import com.hanthienduc.newestmovie.details.MovieDetailsFragment;
+import com.hanthienduc.newestmovie.favorites.FavoritesFragment;
 import com.hanthienduc.newestmovie.listing.MoviesListingFragment;
 import com.hanthienduc.newestmovie.models.Movie;
 import com.hanthienduc.newestmovie.tvshow.TVShowListingFragment;
@@ -20,7 +21,8 @@ import com.hanthienduc.newestmovie.tvshow.TVShowListingFragment;
 public class MainActivity extends AppCompatActivity implements
         BottomNavigationView.OnNavigationItemSelectedListener,
         MoviesListingFragment.Callback,
-        TVShowListingFragment.Callback {
+        TVShowListingFragment.Callback,
+        FavoritesFragment.Callback {
 
     public static final String DETAILS_FRAGMENT = "DetailsFragment";
     private boolean twoPaneMode;
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements
                 return true;
             case R.id.navigation_tvshow:
                 openScreen(TVShowListingFragment.newInstance());
+                return true;
+            case R.id.navigation_favorites:
+                openScreen(FavoritesFragment.newInstance());
                 return true;
         }
         return true;
@@ -132,4 +137,12 @@ public class MainActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
+    @Override
+    public void onFavoriteMovieClicked(Movie movie) {
+        if (twoPaneMode) {
+            loadMovieFragment(movie);
+        } else {
+            startMovieActivity(movie);
+        }
+    }
 }
